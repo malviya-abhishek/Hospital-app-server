@@ -1,6 +1,6 @@
 require("dotenv").config();
 import { Client } from "pg";
-import { CREATE_TABLES, GENERATE_DATA } from "./queries";
+import { CREATE_TABLES, CREATE_USER, GENERATE_DATA } from "./queries";
 
 export const client = new Client({
   user: process.env.DB_USER,
@@ -11,10 +11,14 @@ export const client = new Client({
 });
 
 
- export const create_tables = (): any =>{
-   return client.query(CREATE_TABLES);
+ export const create_tables = (): any=>{
+   return client.query(CREATE_TABLES());
  }
 
- export const generate_data = (): any => {
-   return client.query(GENERATE_DATA);
+ export const generate_data = ()=> {
+   return client.query(GENERATE_DATA());
  }
+
+ export const create_user = (user: any)=>{
+  return client.query(CREATE_USER(user));
+}

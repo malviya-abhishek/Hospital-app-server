@@ -18,5 +18,19 @@ CREATE TABLE IF NOT EXISTS "users" (
 export const CREATE_USER = (user: any): string => 
 `
 INSERT INTO users(name, email, password, role)
-VALUES (${user.name}, ${user.email}, ${user.password}, ${user.role});
+VALUES ('${user.name}', '${user.email}', '${user.password}', '${user.role}')
+RETURNING id as userId
+`;
+
+export const GET_USERS = (): string =>
+`
+SELECT u.id, u.name, u.email, r.role FROM users as u
+INNER JOIN roles as r ON u.role = r.id;
+`;
+
+export const GET_USER = (userId : any): string =>
+`
+SELECT u.id, u.name, u.email, r.role FROM users as u
+INNER JOIN roles as r ON u.role = r.id
+where u.id = ${userId};
 `;

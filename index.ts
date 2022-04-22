@@ -18,12 +18,12 @@ const INIT =async () => {
 
     // CREATE TABLES
     const log_create_tables =  await create_tables();
-    const log_create_tables_status : boolean[] = [];
+    let log_create_tables_status = 0;
     log_create_tables.forEach( (e: { command: string; }) => {
-          log_create_tables_status.push(e.command === 'CREATE');
+      if(e.command === 'CREATE')    
+        log_create_tables_status += 1;
     });
-    console.log("log_create_tables", log_create_tables_status );
-
+    console.log("log_create_tables", log_create_tables_status , "/" , log_create_tables.length );
 
     // FILL INTIAL DATA
     const log_generate_data =  await generate_data();

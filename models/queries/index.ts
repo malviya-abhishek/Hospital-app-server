@@ -14,3 +14,11 @@ export const GENERATE_DATA = () : QueryConfig => ({
 export const CREATE_USER = (user: any): QueryConfig<any> => ({
   text: users.CREATE_USER(user),
 });
+
+export const GET_USERS = (): QueryConfig<any[]> => ({
+  text: users.GET_USERS(),
+});
+
+export const GET_USER = (userId: number | string) => ({
+  text: users.GET_USER(userId),
+})

@@ -1,6 +1,7 @@
 import { Express, Request, Response, Router } from "express";
 import { patientRoutes } from "./patient.routes";
 import { userRoutes } from "./user.routes";
+import {receptionistRoutes} from './receptionist.routes';
 
 export const routesInit = function(app: Express){
   app.get("/healthcheck", (req: Request, res: Response)=>{
@@ -8,4 +9,5 @@ export const routesInit = function(app: Express){
   });
   userRoutes(app);
   patientRoutes(app);
+  receptionistRoutes(app);
 }

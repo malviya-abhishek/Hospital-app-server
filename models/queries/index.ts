@@ -5,7 +5,7 @@ import { QueryConfig } from "pg";
 
 
 export const CREATE_TABLES = (): QueryConfig<any[]> => ({
-  text: roles.CREATE_ROLES_TABLE() + users.CREATE_USERS_TABLE() + appointments.CREATE_NEW_APPOINTMENT_TABLE(),
+  text: roles.CREATE_ROLES_TABLE() + users.CREATE_USERS_TABLE() + appointments.CREATE_NEW_APPOINTMENT_TABLE() + appointments.CREATE_CONFIRM_APPOINTMENT_TABLE(),
 });
 
 export const GENERATE_DATA = () : QueryConfig => ({
@@ -26,4 +26,9 @@ export const GET_USER = (userId: number | string) => ({
 
 export const CREATE_NEW_APPOINTMENT = (appointment: any): QueryConfig<any> => ({
   text: appointments.CREATE_NEW_APPOINTMENT(appointment)
-})
+});
+
+
+export const CREATE_CONFIRM_APPOINTMENT = (appointment: any): QueryConfig<any> => ({
+  text: appointments.CREATE_CONFIRM_APPOINTMENT(appointment)
+});

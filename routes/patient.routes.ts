@@ -1,9 +1,6 @@
 import { Express, Request, Response } from "express";
-import * as userController from '../controller/user.controller';
+import * as patientController from '../controller/patient.controller';
 
 export const patientRoutes = function(app: Express){
-  // app.get("/users", [userController.getUsers]);
-  // app.get("/users/:userId", [userController.getUser])
-  // app.post("/users", [userController.postUser]);
-  app.post("/appointment/", )
+  app.post("/new-appointment", [patientController.postNewAppointment]);
 }
